@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>{% block title %}Typequoting{% endblock %}</title>
+		<link rel="stylesheet" href="{% static 'master.css' %}" />
+		<script src="//use.typekit.net/qfu2ezf.js"></script>
+		<script>try{Typekit.load();}catch(e){}</script>
+    </head>
+    <body>
+    	<header class="site-header">
+			<h1 class="site-logo"><a href="/"><img src="{% static 'typequoting.svg' %}" alt="Typequoting" /></a></h1>
+			<h2 class="site-headline">Tell the story</h2>
+		</header>
+        {% block content %}{% endblock %}
+        <footer class="site-footer">A project by <a href="http://rolandomurillo.com/">Rolando Murillo</a></footer>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="{% static 'countdown.js' %}"></script>
+        <script src="{% static 'master.js' %}"></script>
+    </body>
+</html>
