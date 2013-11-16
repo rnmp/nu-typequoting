@@ -43,7 +43,7 @@ a {
 	font-weight: normal;
 	text-decoration: none;
 	color: inherit;
-	border-bottom: 0.2em solid #6e585f;
+	border-bottom: 0.1em solid #6e585f;
 }
 
 mark {
@@ -177,6 +177,15 @@ cite {
 	float: right;
 }
 
+.site-nav {
+	float: right;
+}
+.site-nav > a {
+	margin-left: 30px;
+	font-weight: 300;
+	border: none;
+}
+
 .site-header {
 	margin-bottom: 4pc;
 }
@@ -185,9 +194,11 @@ cite {
 	margin-right: 1pc;
 	vertical-align: middle;
 }
-.site-headline {
+.site-headline, .site-nav {
 	text-transform: lowercase;
 	font-size: 18pt;
+}
+.site-headline {
 	letter-spacing: 2pt;
 	color: #6e585f;
 }
@@ -215,4 +226,9 @@ cite {
 
 .prompt-statement {
 	font-size: 24pt;
+}
+
+.alphabet.grid figure {
+	float: left;
+	width: 7.692307692%;
 }

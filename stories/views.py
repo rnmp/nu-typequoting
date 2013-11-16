@@ -31,7 +31,7 @@ def show_story(request):
     })
 
 def image_gallery(request):
-    images = Image.objects.order_by('-id').all()
+    images = Image.objects.order_by('name').all()
     return render(request, 'stories/image_gallery.html', {
         'images': images,
     })

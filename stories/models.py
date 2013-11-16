@@ -20,6 +20,8 @@ class Story(models.Model):
 
 class Image(models.Model):
     url = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    uppercase = models.BooleanField()
     typeface = models.CharField(max_length=200)
     author_name = models.CharField(max_length=200)
     author_url = models.CharField(max_length=200)

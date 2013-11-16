@@ -14,9 +14,7 @@
 			<input type="text" id="id_author_name" name="author_name" placeholder="E.g. Baeh Ving Tawn">
 		</div>
 	    <button class="right" type="submit">Submit</button>
-		{% for image in images %}
-			<input id="id_images_{{ forloop.counter0 }}" name="images" type="hidden" value="{{ image.id }}">
-		{% endfor %}
+		{{ form.images }}
 	    {% csrf_token %}
 	</form>
 {% endblock %}

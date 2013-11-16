@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
-{% block title %}Your Story - Typequoting{% endblock %}
+{% block title %}Images — Typequoting{% endblock %}
 
 {% block content %}
 
-    {% for image in images %}
-
-        <p>
-            <img width=100 height=100 src="{{ image.url }}" />
-            <br>By {% if image.author_url %}<a href="{{image.author_url}}">{% endif %}{{image.author_name}}{% if image.author_url %}</a>{% endif %}
-            <br>Using {{image.typeface}}
-        </p>
-
-    {% endfor %}
+    <div class="alphabet grid">
+    	{% for image in images %}
+    	    <figure>
+    	    	<img src="{{ image.url }}" alt />
+    	    	<figcaption>
+    	    		By {% if image.author_url %}<a href="{{image.author_url}}">{% endif %}{{image.author_name}}{% if image.author_url %}</a>{% endif %}
+    	    		<br>Using {{image.typeface}}
+    	    	</figcaption>
+    	    </figure>
+    	{% endfor %}
+    </div>
 
 {% endblock %}
