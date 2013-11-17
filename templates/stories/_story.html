@@ -1,0 +1,28 @@
+<article class="story">
+    <figure class="clear">
+        {% for image in story.ordered_images %}
+            <img src="{{ image.url }}" alt />
+        {% endfor %}
+    </figure>
+    {% if forloop.first %}
+        {% if messages %}
+    	    {% for message in messages %}
+    	    <p>{{ message }}</p>
+    	    {% endfor %}
+        {% endif %}
+    {% endif %}
+    <blockquote class="shrink-layout{% if forloop.first %}{% if messages %} active{% endif %}{% endif %}">
+        <p>{{ story.body }}</p>
+    </blockquote>
+    <footer class="clear">
+    	<span class="left">
+    		by <strong>{% if story.author_name %}{{ story.author_name }}{% else %}Anonymous{% endif %}</strong>
+    		{{ story.created_at | timesince }} ago
+    	</span>
+    	<span class="right">
+    		<label for="share-{{story.id}}">Share</label>
+    		<input type="text" id="share-{{story.id}}" value="http://typequoting.com/s/{{story.id}}">
+    		
+    	</span>
+    </footer>
+</article>

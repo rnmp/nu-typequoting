@@ -25,7 +25,6 @@ class Image(models.Model):
     typeface = models.CharField(max_length=200)
     author_name = models.CharField(max_length=200)
     author_url = models.CharField(max_length=200)
-    body = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -43,7 +42,7 @@ class Image(models.Model):
         return kls.objects.order_by('?')[:count]
 
     def __unicode__(self):
-        return "<Image url='%s', ...>" % self.url
+        return self.name
 
 
 class StoryImage(models.Model):

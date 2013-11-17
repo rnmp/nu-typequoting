@@ -1,20 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<figure class="clear">
-		{% for image in images %}
-		    <img class="hidden js-load" src="{{ image.url }}" alt />
-		{% endfor %}
-	</figure>
-	<form method="POST" class="clear">
-		<p class="prompt-statement">Create a short story inspired by the images above. Hurry up, you  have <mark><span id="prompt-countdown">60 seconds</span>.</mark></p>
-		{{ form.body }}
-		<div class="left">
-			<label for="id_author_name">Signature</label>
-			<input type="text" id="id_author_name" name="author_name" placeholder="E.g. Baeh Ving Tawn">
-		</div>
-	    <button class="right" type="submit">Submit</button>
-		{{ form.images }}
-	    {% csrf_token %}
-	</form>
+	<article class="story">
+		<figure class="clear">
+			{% for image in images %}
+			    <img class="hidden js-load" src="{{ image.url }}" alt />
+			{% endfor %}
+		</figure>
+		<form method="POST" class="clear">
+			<p class="prompt-statement">Create a short story <em>inspired</em> by the images above. Hurry up, you  have <mark><span id="prompt-countdown">60 seconds</span>.</mark></p>
+			{{ form.body }}
+			<div class="left">
+				<label for="id_author_name">Signature</label>
+				<input type="text" id="id_author_name" name="author_name" placeholder="E.g. Baeh Ving Tawn">
+			</div>
+		    <button class="right" type="submit">Submit</button>
+			{{ form.images }}
+		    {% csrf_token %}
+		</form>
+	</article>
 {% endblock %}

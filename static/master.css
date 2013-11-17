@@ -57,16 +57,16 @@ p, form, blockquote {
 	margin-bottom: 1em;
 }
 
-figure {
+.story figure {
 	margin-bottom: 5pc;
 	min-height: 224px;
 }
-figure > img {
+.story figure > img {
 	position: relative;
 	width: 20%;
 	float: left;
 }
-figure > img:nth-child(odd) {
+.story figure > img:nth-child(odd) {
 	top: 20pt;
 }
 
@@ -105,10 +105,21 @@ label > span {
 	font-style: italic;
 }
 
-blockquote {
-	position: relative;
+.shrink-layout {
 	width: 75%;
 	margin: auto;
+}
+.two-columns {
+	-webkit-columns: 2;
+	-moz-columns: 2;
+	columns: 2;
+}
+.lead {
+	font-size: 18pt
+}
+
+blockquote {
+	position: relative;
 	font-size: 24pt;
 }
 blockquote.active::before {
@@ -118,9 +129,8 @@ blockquote.active::before {
 	margin-right: 1.5pc;
 	border-left: 0.2em solid #eb004b;
 }
-cite {
+footer {
 	display: block;
-	text-align: right;
 }
 
 @-webkit-keyframes load {
@@ -220,15 +230,41 @@ cite {
 	margin-bottom: 1em;
 }
 
-.typequote {
+.story {
 	margin-bottom: 3em;
+}
+.story footer {
+	padding-top: 0.5em;
+	line-height: 40px;
+	border-top: 0.05em dashed #261c1e;
 }
 
 .prompt-statement {
 	font-size: 24pt;
 }
-
-.alphabet.grid figure {
+.alphabet-grid {
+	margin-bottom: 3pc;
+}
+.alphabet-grid figure {
+	position: relative;
 	float: left;
-	width: 7.692307692%;
+	width: 11.111111111%;
+	padding-bottom: 11.111111111%;
+}
+.alphabet-grid img {
+	position: absolute;
+}
+.alphabet-grid figcaption {
+	display: none;
+	position: absolute;
+	top: 100%;
+	background: #261c1e;
+	z-index: 999;
+	width: 200%;
+	font-size: 14pt;
+	line-height: 1.4em;
+	padding: 0.2em 0.5em;
+}
+.alphabet-grid figure:hover figcaption {
+	display: block;
 }
