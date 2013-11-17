@@ -20,3 +20,9 @@ $(window).load(function(){
 		}, timer);
 	});
 });
+
+$(function(){
+	$('.share-link').on('click', function(){
+		$(this).select();
+	})
+});
