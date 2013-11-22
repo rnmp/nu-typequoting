@@ -14,7 +14,7 @@
     <blockquote class="shrink-layout{% if forloop.first %}{% if messages %} active{% endif %}{% endif %}">
         <p>{{ story.body }}</p>
     </blockquote>
-    <footer class="clear">
+    <footer class="shrink-layout clear">
     	<span class="left">
     		by <strong>{% if story.author_name %}{{ story.author_name }}{% else %}Anonymous{% endif %}</strong>
     		{{ story.created_at | timesince }} ago
