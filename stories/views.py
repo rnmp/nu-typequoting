@@ -27,7 +27,7 @@ def index(request):
 
 
 def submissions(request):
-    paginator = Paginator(Story.objects.order_by('-id'), 2)
+    paginator = Paginator(Story.objects.order_by('-id'), 20)
     page = request.GET.get('page')
     try:
         stories_page = paginator.page(page)
