@@ -268,3 +268,11 @@ footer {
 .alphabet-grid figure:hover figcaption {
 	display: block;
 }
+
+.pagination {
+	font-size: 18pt;
+	text-align: center;
+}
+.pagination li {
+	display: inline-block;
+}
