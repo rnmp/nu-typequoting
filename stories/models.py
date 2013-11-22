@@ -59,20 +59,21 @@ def create_fake_data():
     s = Story.objects.create(body="farfrompuken is so awesome, i just love it.",
                              author_name="jared nuzzolillo")
 
-    img_urls = ("http://typequoting.com/images/b-alfred-hitchcock.png",
-                "http://typequoting.com/images/d-power-outlet.png",
-                "http://typequoting.com/images/f-sink.png",
-                "http://typequoting.com/images/k-popeye.png",
-                "http://typequoting.com/images/m-mountain.png",
-                "http://typequoting.com/images/p-snoopy.png",
-                "http://typequoting.com/images/t-tnt.png",)
+    img_urls = ("https://dl.dropboxusercontent.com/u/190173/typequoting/images/u-B.png",
+                "https://dl.dropboxusercontent.com/u/190173/typequoting/images/u-D.png",
+                "https://dl.dropboxusercontent.com/u/190173/typequoting/images/l-f.png",
+                "https://dl.dropboxusercontent.com/u/190173/typequoting/images/u-K.png",
+                "https://dl.dropboxusercontent.com/u/190173/typequoting/images/l-m.png",
+                "https://dl.dropboxusercontent.com/u/190173/typequoting/images/u-P.png",
+                "https://dl.dropboxusercontent.com/u/190173/typequoting/images/u-T.png",)
 
     for i, img_url in enumerate(img_urls):
         StoryImage.objects.create(
             story=s,
             image=Image.objects.create(
                 url=img_url,
-                typeface="Typeface %d" % i,
+                name="name %d" % i,
                 author_name="Johnny %d Times" % i,
                 author_url="http://somewherecool%d" % i,
-                body="Cool Story Bro" * i))
+                uppercase="uppercase %d" % i,
+                typeface="typeface %d" % i))

@@ -3,8 +3,39 @@
 {% block title %}Submissions — Typequoting{% endblock %}
 
 {% block content %}
-    <h1 class="title">Last 20 submissions</h1>
-    {% for story in stories %}
+    <h1 class="title">Recent submissions</h1>
+    {% for story in stories_page %}
         {% include 'stories/_story.html' %}
     {% endfor %}
+
+    <style>
+        .paginator-normal { color: white; }
+        .paginator-selected { color: red; }
+        .paginator-disabled { color: gray; }
+    </style>
+
+        <div class="pagination">
+            {% if stories_page.has_previous %}
+                <a href="?page={{ stories_page.previous_page_number }}" class="paginator-normal">&lsaquo;&lsaquo; Prev</a>
+            {% else %}
+                <a class="paginator-disabled">&lsaquo;&lsaquo; Prev</a>
+            {% endif %}
+            {% for page in pages %}
+                {% if page %}
+                    {% ifequal page stories_page.number %}
+                    <a class="paginator-selected">{{ page }}</a>
+                    {% else %}
+                    <a href="?page={{ page }}" class="paginator-normal">{{ page }}</a>
+                    {% endifequal %}
+                {% else %}
+                    ...
+                {% endif %}
+            {% endfor %}
+            {% if stories_page.has_next %}
+                <a href="?page={{ stories_page.next_page_number }}" class="paginator-normal">Next &rsaquo;&rsaquo;</a>
+            {% else %}
+                <a class="paginator-disabled">Next &rsaquo;&rsaquo;</a>
+            {% endif %}
+        </div>
+
 {% endblock %}

@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render, redirect
 
 from .forms import StoryForm
 from .models import Image, Story
@@ -26,10 +27,18 @@ def index(request):
 
 
 def submissions(request):
-    stories = Story.objects.order_by('-id').all()[:20]
+    paginator = Paginator(Story.objects.order_by('-id'), 2)
+    page = request.GET.get('page')
+    try:
+        stories_page = paginator.page(page)
+    except PageNotAnInteger:
+        stories_page = paginator.page(1)
+    except EmptyPage:
+        stories_page = paginator.page(paginator.num_pages)
     # process images ahead of time so that they are in the correct order
     return render(request, 'stories/submissions.html', {
-        'stories': stories,
+        'stories_page': stories_page,
+        'pages': paginator.page_range,
     })
 
 def view_story(request, story_id):
