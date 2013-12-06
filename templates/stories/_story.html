@@ -7,14 +7,14 @@
     {% if forloop.first %}
         {% if messages %}
     	    {% for message in messages %}
-    	    <p>{{ message }}</p>
+    	    <p class="shrink-layout creation-message">{{ message }}</p>
     	    {% endfor %}
         {% endif %}
     {% endif %}
     <blockquote class="shrink-layout{% if forloop.first %}{% if messages %} active{% endif %}{% endif %}">
         <p>{{ story.body }}</p>
     </blockquote>
-    <footer class="clear">
+    <footer class="clear shrink-layout">
     	<span class="left">
     		by <strong>{% if story.author_name %}{{ story.author_name }}{% else %}Anonymous{% endif %}</strong>
     		{{ story.created_at | timesince }} ago
@@ -23,14 +23,14 @@
             
         </style>
     	<span class="right">
+            {% if not story.has_likes %}
+            <span class="likes-display" style="display: none;"><span class="num-likes">0</span> <span class="pluralize"></span> this</span>
+            {% else %}
+            <span class="likes-display"><span class="num-likes">{{ story.like_count }}</span> <span class="pluralize">{% if story.like_count > 1 %}people like{% else %}person likes{% endif %}</span> this</span>
+            {% endif %}
+            <a class="like-button like-active" href="{% url 's:like_story' story.id %}">Like</a>
     		<label for="share-{{story.id}}">Share</label>
     		<input class="share-link" type="text" id="share-{{story.id}}" value="http://typequoting.com/s/{{story.id}}">
-            <a class="like-button like-active" href="{% url 's:like_story' story.id %}">Like</a>
-            {% if not story.has_likes %}
-            <span class="likes-display" style="display: none;"><span class="num-likes">0</span> Like(s)</span>
-            {% else %}
-            <span class="likes-display"><span class="num-likes">{{ story.like_count }}</span> Like(s)</span>
-            {% endif %}
         </span>
     </footer>
 </article>

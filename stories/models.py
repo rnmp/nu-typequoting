@@ -4,7 +4,7 @@ from django.db import models
 class Story(models.Model):
     body = models.TextField()
     author_name = models.CharField(max_length=200, blank=True)
-    like_count = models.IntegerField(default=0, null=True)
+    like_count = models.IntegerField(default=0, null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

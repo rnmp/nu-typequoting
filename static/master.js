@@ -30,8 +30,15 @@ function like(event) {
       url: btn.attr('href'),
       success: function(response) {
         if (response.success) {
+          var pluralize = btn.siblings('.likes-display').show().find('.pluralize');
           btn.siblings('.likes-display').show().find(
               '.num-likes').text(response.like_count);
+          if (response.like_count <= 1) {
+          	pluralize.text('person likes')
+          } else {
+
+          	pluralize.text('people like')
+          }
           btn.hide();
         } else {
           btn.text(response.message);

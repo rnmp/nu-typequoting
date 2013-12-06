@@ -14,7 +14,7 @@ def index(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'You just created this!')
-            return redirect('submissions')
+            return redirect('recent_submissions')
         else:
             image_ids = request.POST.getlist('images', [])
             imgs = [Image.objects.get(pk=image_id) for image_id in image_ids]
@@ -47,7 +47,7 @@ def popular_submissions(request):
         request, Story.objects.filter(
             like_count__gt=0).order_by('-like_count'), "popular")
 
-def submissions(request):
+def recent_submissions(request):
     return _submissions(
         request, Story.objects.order_by('-id'), "recent")
 
