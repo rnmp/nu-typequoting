@@ -22,8 +22,28 @@ $(window).load(function(){
 	});
 });
 
+function like(event) {
+    var btn = $(event.currentTarget);;
+    event.preventDefault();
+    return $.ajax({
+      dataType: 'json',
+      url: btn.attr('href'),
+      success: function(response) {
+        if (response.success) {
+          btn.siblings('.likes-display').show().find(
+              '.num-likes').text(response.like_count);
+          btn.hide();
+        } else {
+          btn.text(response.message);
+        }
+      }
+    });
+}
+
 $(function(){
 	$('.share-link').on('click', function(){
 		$(this).select();
 	})
+
+    $('.like-button').on('click', like)
 });
