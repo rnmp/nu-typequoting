@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 
 from .forms import StoryForm
 from .models import Image, Story
+from typequoting.utils import JsonResponse
 
 
 def index(request):
@@ -28,7 +29,7 @@ def index(request):
 
 def submissions(request):
     paginator = Paginator(Story.objects.order_by('-id'), 20)
-    page = request.GET.get('page')
+    page = request.GET.get('page', 1)
     try:
         stories_page = paginator.page(page)
     except PageNotAnInteger:
@@ -41,14 +42,31 @@ def submissions(request):
         'pages': paginator.page_range,
     })
 
+
 def view_story(request, story_id):
     story = Story.objects.get(id=story_id) 
     return render(request, 'stories/view_story.html', {
         'story': story,
     })
 
+
 def about_page(request):
     images = Image.objects.order_by('name').all()
     return render(request, 'about.html', {
         'images': images,
     })
+
+
+def like(request, story_id):
+    try:
+        story = get_object_or_404(Story, pk=story_id)
+    except Story.DoesNotExist:
+        return JsonResponse({'ok': False, 'message': 'Cannot be found.'})
+    if request.COOKIES.has_key('already_voted_on_%d' % story_id):
+        return JsonResponse({'ok': False, 'message': 'Already voted.'})
+    else:
+        story.like()
+        story.save()
+        resp = JsonResponse({'ok': True})
+        resp.set_cookie('already_voted_on_%d' % story.id)
+        return resp

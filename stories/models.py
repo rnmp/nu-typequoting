@@ -1,10 +1,10 @@
-import random
-
 from django.db import models
+
 
 class Story(models.Model):
     body = models.TextField()
     author_name = models.CharField(max_length=200, blank=True)
+    like_count = models.IntegerField(default=0, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -17,6 +17,10 @@ class Story(models.Model):
     def ordered_images(self):
         """ Images ordered according to order in which they were saved. """
         return self.images.order_by('story_images__id')
+
+    def like(self):
+        """ Increment the like_count for this story. """
+        self.like_count = self.like_count + 1 if self.like_count else 1
 
 class Image(models.Model):
     url = models.CharField(max_length=200)

@@ -14,7 +14,7 @@
     <blockquote class="shrink-layout{% if forloop.first %}{% if messages %} active{% endif %}{% endif %}">
         <p>{{ story.body }}</p>
     </blockquote>
-    <footer class="shrink-layout clear">
+    <footer class="clear">
     	<span class="left">
     		by <strong>{% if story.author_name %}{{ story.author_name }}{% else %}Anonymous{% endif %}</strong>
     		{{ story.created_at | timesince }} ago
@@ -22,6 +22,7 @@
     	<span class="right">
     		<label for="share-{{story.id}}">Share</label>
     		<input class="share-link" type="text" id="share-{{story.id}}" value="http://typequoting.com/s/{{story.id}}">
+    		<input class="share-link" type="text" id="share-{{story.id}}" value="{% url 's:view_story' story.id %}">
     		
     	</span>
     </footer>
