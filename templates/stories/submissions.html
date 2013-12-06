@@ -1,9 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}Submissions — Typequoting{% endblock %}
+{% block title %}{% if page_type == "popular" %}Popular Submissions — Typequoting{% else %}Recent Submissions — Typequoting{% endif %}
+
+{% endblock %}
 
 {% block content %}
-    <h1 class="title">Submissions</h1>
+    {% if page_type == "popular" %}
+        <h1 class="title">Popular Submissions</h1>
+        Looking for the <a href="{% url "submissions" %}">recent submissions</a>?
+    {% else %}
+        <h1 class="title">Recent Submissions</h1>
+        Looking for the <a href="{% url "popular_submissions" %}">popular submissions</a>?
+    {% endif %}
     {% for story in stories_page %}
         {% include 'stories/_story.html' %}
     {% endfor %}

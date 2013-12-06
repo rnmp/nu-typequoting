@@ -22,6 +22,10 @@ class Story(models.Model):
         """ Increment the like_count for this story. """
         self.like_count = self.like_count + 1 if self.like_count else 1
 
+    @property
+    def has_likes(self):
+        return self.like_count and self.like_count > 0
+
 class Image(models.Model):
     url = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
