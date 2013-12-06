@@ -223,10 +223,22 @@ footer {
 	border-top: 0.1em solid #261c1e;
 }
 
+.title, .subtitle {
+	text-align: center;
+}
 .title {
 	font-size: 36pt;
 	font-weight: normal;
-	text-align: center;
+}
+.subtitle {
+	margin-bottom: 3em;
+	color: #6e585f;
+}
+.subtitle a {
+	color: #fff;
+}
+.creation-message {
+	color: #6e585f;
 	margin-bottom: 1em;
 }
 
@@ -234,9 +246,13 @@ footer {
 	margin-bottom: 3em;
 }
 .story footer {
+	font-size: 14pt;
 	padding-top: 0.5em;
 	line-height: 40px;
-	border-top: 0.05em dashed #261c1e;
+	border-top: 0.1em dashed #261c1e;
+}
+.likes-display, .like-button {
+	margin-right: 20px;
 }
 
 .prompt-statement {
@@ -267,4 +283,12 @@ footer {
 }
 .alphabet-grid figure:hover figcaption {
 	display: block;
+}
+
+.pagination {
+	font-size: 18pt;
+	text-align: center;
+}
+.pagination li {
+	display: inline-block;
 }

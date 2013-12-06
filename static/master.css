@@ -229,6 +229,10 @@ footer {
 .title {
 	font-size: 36pt;
 	font-weight: normal;
+	margin-bottom: 1em;
+}
+.title + .subtitle {
+	margin-top: -2em;
 }
 .subtitle {
 	margin-bottom: 3em;
